@@ -1,7 +1,8 @@
 var express = require('express');
 var twitter = require('./twitter.js')
 var app = express();
-var port = process.env.PORT || 8000;
+var ipaddress = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
+var port = process.env.OPENSHIFT_NODEJS_PORT || 8000;
 
 app.get("/tag/:tag", function(req, res){
   var tag = req.params.tag;
@@ -18,4 +19,6 @@ app.get("/tag/:tag", function(req, res){
 });
 
 
-app.listen(port);
+app.listen(port, ipaddress, function(){
+  console.log("Running on port " + port);
+});
