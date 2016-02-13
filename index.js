@@ -9,7 +9,7 @@ app.get("/tag/:tag", function(req, res){
 
   console.log(tag);
 
-  twitter.getUserTweets(tag, function(err, data){
+  twitter.getTagTweets(tag, function(err, data){
 
     res.send(data)
 
