@@ -14,7 +14,6 @@ var Twit = require("twit");
    *   @return tweets Array of tweet objects
    */
   var getUserTweets = function(screen_name, callback){
-    console.log("getting user tweets");
     var params = {
       screen_name: screen_name,
       count: 200,
@@ -32,9 +31,7 @@ var Twit = require("twit");
   module.exports.getUserTweets = getUserTweets;
 
   var getTagTweets = function(tag, callback){
-    console.log("loading tweets that correspond with " + tag);
-
-    bot.get('search/tweets', { q: tag, count: 100 }, function(err, data, response) {
+    bot.get('search/tweets', { q: tag, count: 200 }, function(err, data, response) {
       callback(err, data);
 });
 
